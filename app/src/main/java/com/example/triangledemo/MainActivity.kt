@@ -141,6 +141,10 @@ fun MainScreen(modifier: Modifier = Modifier) {
         ) {
             Text("Вычислить")
         }
+
+        inputError?.let {
+            Text(it, color = MaterialTheme.colorScheme.error)
+        }
     }
 }
 
