@@ -106,6 +106,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.bodyMedium)
         OutlinedTextField(
             value = textField,
+            placeholder = { Text("Например, г6.7")},
             onValueChange = {
                 textField = it
                 elementType = it.take(1)
