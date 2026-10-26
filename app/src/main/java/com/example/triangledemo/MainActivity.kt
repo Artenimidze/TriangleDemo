@@ -118,6 +118,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
         OutlinedTextField(
             value = textField,
             onValueChange = {
+                textField = it
                 elementType = it.take(1)
                 valueText = it.drop(1)
                             },
