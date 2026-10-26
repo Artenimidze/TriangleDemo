@@ -58,7 +58,7 @@ data class TriangleResult(
     val error: String? = null
 )
 
-fun TriangleCalculator(elementType: String, value: Double): TriangleResult {
+fun triangleCalculator(elementType: String, value: Double): TriangleResult {
     if (value <= 0) {
         return TriangleResult(0.0, 0.0, 0.0, "Значение должно быть положительным")
     }
@@ -134,7 +134,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 } else if (elementType.isBlank()) {
                     inputError = "Введите букву элемента"
                 } else {
-                    val r = TriangleCalculator(elementType, v)
+                    val r = triangleCalculator(elementType, v)
                     if (r.error != null) inputError = r.error else result = r
                 }
             }
@@ -145,6 +145,17 @@ fun MainScreen(modifier: Modifier = Modifier) {
         inputError?.let {
             Text(it, color = MaterialTheme.colorScheme.error)
         }
+        result?.let { r ->
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    Text("Результат", style = MaterialTheme.typography.titleMedium)
+                    Text("Катет:       ${"%.4f".format(r.leg)}")
+                    Text("Гипотенуза:  ${"%.4f".format(r.hypotenuse)}")
+                    Text("Площадь:     ${"%.4f".format(r.area)}")
+                }
+            }
     }
 }
 
